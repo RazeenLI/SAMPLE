@@ -1,26 +1,34 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-char *getMonth(int num);
+void giveUp(char *res);
+void getResult(int num);
 int main(int argc, char **argv)
 {
-    if (argc != 2)
-    {
-        fprintf(stderr, "must enter 12 number");
-        exit(0);
-    } else if (atoi(argv[1]) > 12 || atoi(argv[1]) < 1) 
-    {
-        fprintf(stderr, "must enter a number between 1 to 12");
-        exit(0);
-    }
-    printf("%s\n", getMonth(atoi(argv[1])));
+    if (argc != 2) giveUp(argv[0]);
+    getResult(atoi(argv[1]));
+
     return 0;
 }
 
-char *getMonth(int num) 
+void giveUp(char *res)
 {
-    char *month[13] = {"????",  "January", "February", "March",
-		                "April", "May", "June", "July", "August",
-		                "September", "October", "November", "December"};
-    return month[num];
+    fprintf(stderr, "%s usage:", res);
+}
+
+void getResult(int num)
+{
+    if (num > 0)
+    {
+        for (int i = 0; i <= num; i++)
+        {
+            printf("%d\n", i);
+        }
+    } else
+    {
+        for (int i = 0; i >= num; i--)
+        {
+            printf("%d\n", i);
+        }
+    }
 }
