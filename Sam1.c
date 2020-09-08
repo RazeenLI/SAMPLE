@@ -1,13 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 void giveUp(char *res);
-void getResult(int num);
+void printNum(char *string, int from, int end);
 int main(int argc, char **argv)
 {
-    if (argc != 2) giveUp(argv[0]);
-    getResult(atoi(argv[1]));
-
+    if (argc != 4) giveUp(argv[0]);
+    printNum(argv[1], atoi(argv[2]), atoi(argv[3]));
     return 0;
 }
 
@@ -16,19 +16,27 @@ void giveUp(char *res)
     fprintf(stderr, "%s usage:", res);
 }
 
-void getResult(int num)
+void printNum(char *string, int from, int end) 
 {
-    if (num > 0)
-    {
-        for (int i = 0; i <= num; i++)
+    int stop = strlen(string);
+    int sign = 0;
+    for (int i = 0; i < end; i++) {
+        printf("%c", string[from]);
+        if (from == stop - 1)
         {
-            printf("%d\n", i);
+            sign = 1;
+        } else if (from == 0)
+        {
+            sign = 0;
         }
-    } else
-    {
-        for (int i = 0; i >= num; i--)
+        switch (sign)
         {
-            printf("%d\n", i);
+            case 1:
+                from--;
+                break;
+            case 0:
+                from++;
         }
     }
+    printf("\n");
 }
