@@ -2,32 +2,44 @@
 #include <stdlib.h>
 #include <assert.h>
 
-int main(int argc, char **argv)
+int chaekatep(int start, int step, int finish);
+void seq(int start, int step, int finish);
+int main(int argc, char* argv[])
 {
-    int i, j, *a;
-    int N = 0;
-    
-    // initialisation
     assert(argc > 1);
-    sscanf(argv[1], "%d", &N);
-    assert(N > 0);
-    a = malloc(N * sizeof(int));
-    assert(a != NULL);
-    for (i = 1; i < N; i++) a[i] = 1;
-    
-    // computation
-    for (i = 2; i < N; i++)
+    int start = 1, step = 1, finish = 1;
+    if (argc == 2) 
     {
-        if (a[i])
-        {
-            for (j = i; i * j < N; j++) a[i* j] = 0;
-        }
+        finish = atoi(argv[1]);
+        step = start > finish ? -1 : 1;
+    } else if (argc == 3)
+    {
+        start = atoi(argv[1]);
+        finish = atoi(argv[2]);
+        step = start > finish ? -1 : 1;
+    } else if (argc == 4)
+    {
+        start = atoi(argv[1]);
+        step = atoi(argv[2]);
+        finish = atoi(argv[3]);
     }
+    if (!chaekatep(start, step, finish)) 
+    {
+        printf("errer\n");
+        exit(1);
+    }
+    seq(start, step, finish);
+    return 0;
+}
 
-    // results
-    for (i = 2; i < N; i++)
-    {
-        if (a[i]) printf("%d\n", i);
-    }
-    exit(EXIT_SUCCESS);
+void seq(int start, int step, int finish)
+{ 
+    for (int i = start; (start > finish) ? (i >= finish) : (i <= finish); i +=step) printf("%d   ", i);
+    printf("\n");
+}
+
+int chaekatep(int start, int step, int finish) {
+    if (step == 0) return 0;
+    else if ((step >= 0 && finish >= start) || (step <= 0 && finish <= start)) return 1;
+    return 0;
 }
