@@ -1,7 +1,8 @@
-a = input("please enter a number:")
+a = input("please enter a number: ")
 
-if a.isdigit():
+while (not a.isdigit()) :
+    print("errer")
+    a = input("please enter a number again: ")
+else:
     a = (int)(a)
     print(a * a)
-else:
-    print("errer")
