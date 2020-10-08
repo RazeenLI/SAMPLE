@@ -1,8 +1,3 @@
-a = input("please enter a number: ")
-
-while (not a.isdigit()) :
-    print("errer")
-    a = input("please enter a number again: ")
-else:
-    a = (int)(a)
-    print(a * a)
+for x in range(0, 10):
+    print(f"     {x}")
+    print((10*(x**2)+4*x+1)%12)

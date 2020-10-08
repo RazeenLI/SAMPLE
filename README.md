@@ -19,9 +19,9 @@ What is the distinction between good practices and a process?
 
 What are traits you believe make good team members? How do you decide who you to pick in a group for the project?
     Excellent Communicators
-    Members that Are Well-Organized and Self-Disciplined
+    Well-Organized and Self-Disciplined
     Resourceful and Influential Individuals
-    Proactive Members
+    Proactive
 
 
 Is python a good programming language? Why or why not?
